@@ -5,24 +5,24 @@ const ScoreModal = ({ score, level, onClose, onRestart }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-2 sm:p-4">
       <div className="bg-gray-800 border-4 border-green-400 rounded-lg p-4 sm:p-6 lg:p-8 text-center w-full max-w-xs sm:max-w-md shadow-2xl">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-400 mb-2 sm:mb-4" style={{fontFamily: 'monospace, "Courier New", Courier'}}>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-400 mb-2 sm:mb-4" style={{ fontFamily: 'monospace, "Courier New", Courier' }}>
           คะแนน {score}
         </h2>
-        <p className="text-white text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6" style={{fontFamily: 'monospace, "Courier New", Courier'}}>
+        <p className="text-white text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6" style={{ fontFamily: 'monospace, "Courier New", Courier' }}>
           ระดับ: {level}
         </p>
         <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center">
           <button
             onClick={onRestart}
             className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 bg-orange-500 hover:bg-orange-600 text-white border-2 border-orange-300 rounded-lg text-base sm:text-lg lg:text-xl font-bold transition-all hover:scale-105 transform"
-            style={{fontFamily: 'monospace, "Courier New", Courier'}}
+            style={{ fontFamily: 'monospace, "Courier New", Courier' }}
           >
             หน้าหลัก
           </button>
           <button
             onClick={onClose}
             className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 bg-green-500 hover:bg-green-600 text-white border-2 border-green-300 rounded-lg text-base sm:text-lg lg:text-xl font-bold transition-all hover:scale-105 transform"
-            style={{fontFamily: 'monospace, "Courier New", Courier'}}
+            style={{ fontFamily: 'monospace, "Courier New", Courier' }}
           >
             เล่นต่อ
           </button>
@@ -42,9 +42,9 @@ const LevelSelector = ({ onLevelChange }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center text-white p-2 sm:p-4">
-      <h1 
+      <h1
         className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 lg:mb-12 text-center text-green-400 drop-shadow-lg"
-        style={{fontFamily: 'monospace, "Courier New", Courier'}}
+        style={{ fontFamily: 'monospace, "Courier New", Courier' }}
       >
         TYPE TO LEARN
       </h1>
@@ -54,7 +54,7 @@ const LevelSelector = ({ onLevelChange }) => {
             key={level.id}
             onClick={() => onLevelChange(level.id)}
             className={`px-4 sm:px-6 lg:px-8 py-3 sm:py-4 text-white font-bold border-4 rounded-lg transition-all hover:scale-105 transform text-base sm:text-lg lg:text-xl ${level.color} w-full sm:w-auto shadow-lg`}
-            style={{fontFamily: 'monospace, "Courier New", Courier'}}
+            style={{ fontFamily: 'monospace, "Courier New", Courier' }}
           >
             {level.name}
           </button>
@@ -173,12 +173,12 @@ const GameScreen = ({ level, onShowScore, score, wordsData, onStop }) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInput(value);
-    
+
     // Check for errors in real-time
     if (currentStep === 'english') {
       const targetWord = currentWord?.en.toLowerCase() || '';
       const userInput = value.toLowerCase();
-      
+
       if (userInput.length > 0 && !targetWord.startsWith(userInput)) {
         setIsError(true);
       } else {
@@ -186,7 +186,7 @@ const GameScreen = ({ level, onShowScore, score, wordsData, onStop }) => {
       }
     } else if (currentStep === 'thai') {
       const targetWord = currentWord?.th || '';
-      
+
       if (value.length > 0 && !targetWord.startsWith(value)) {
         setIsError(true);
       } else {
@@ -247,20 +247,20 @@ const GameScreen = ({ level, onShowScore, score, wordsData, onStop }) => {
           <button
             onClick={onStop}
             className="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 bg-red-500 hover:bg-red-600 text-white border-2 border-red-300 rounded-lg font-bold transition-all hover:scale-105 transform text-sm sm:text-base lg:text-lg"
-            style={{fontFamily: 'monospace, "Courier New", Courier'}}
+            style={{ fontFamily: 'monospace, "Courier New", Courier' }}
           >
             หยุด
           </button>
           <div className="text-right">
-            <div 
+            <div
               className="text-lg sm:text-xl lg:text-2xl font-bold text-green-400"
-              style={{fontFamily: 'monospace, "Courier New", Courier'}}
+              style={{ fontFamily: 'monospace, "Courier New", Courier' }}
             >
               คะแนน {score}
             </div>
-            <div 
+            <div
               className="text-gray-300 text-xs sm:text-sm lg:text-base"
-              style={{fontFamily: 'monospace, "Courier New", Courier'}}
+              style={{ fontFamily: 'monospace, "Courier New", Courier' }}
             >
               ระดับ : {getLevelText()}
             </div>
@@ -273,7 +273,7 @@ const GameScreen = ({ level, onShowScore, score, wordsData, onStop }) => {
         {/* Current word display - Responsive sizing with error indication */}
         <div className={`flex flex-col items-center justify-center text-center mb-8 sm:mb-12 lg:mb-16 w-full max-w-6xl transition-all duration-300 ${isError ? 'transform scale-105' : ''}`}>
           <div className={`p-4 sm:p-6 lg:p-8 rounded-2xl border-4 transition-all duration-300 ${isError ? 'border-red-500 bg-red-900 bg-opacity-30 shadow-red-500/50 shadow-2xl' : 'border-transparent bg-transparent'}`}>
-            <div 
+            <div
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-green-400 mb-2 sm:mb-3 lg:mb-4 drop-shadow-lg break-words"
               style={{
                 fontFamily: 'monospace, "Courier New", Courier',
@@ -282,7 +282,17 @@ const GameScreen = ({ level, onShowScore, score, wordsData, onStop }) => {
             >
               {currentWord.en}
             </div>
-            <div 
+            {currentWord.pron && (
+              <div
+                className="text-lg sm:text-xl md:text-2xl lg:text-xl text-gray-500 mb-2 sm:mb-3 lg:mb-4 font-medium break-words"
+                style={{
+                  fontFamily: 'monospace, "Courier New", Courier'
+                }}
+              >
+                {currentWord.pron}
+              </div>
+            )}
+            <div
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-yellow-300 mb-2 sm:mb-3 lg:mb-4 font-bold break-words"
               style={{
                 fontFamily: 'monospace, "Courier New", Courier',
@@ -291,9 +301,9 @@ const GameScreen = ({ level, onShowScore, score, wordsData, onStop }) => {
             >
               {currentWord.th}
             </div>
-            <div 
+            <div
               className={`text-sm sm:text-base lg:text-lg xl:text-xl font-bold px-2 sm:px-4 py-1 sm:py-2 border-2 rounded-lg transition-colors ${isError ? 'text-red-400 bg-red-800 border-red-300' : 'text-cyan-400 bg-gray-800 border-cyan-300'}`}
-              style={{fontFamily: 'monospace, "Courier New", Courier'}}
+              style={{ fontFamily: 'monospace, "Courier New", Courier' }}
             >
               {currentStep === 'english' ? 'พิมพ์ภาษาอังกฤษ' : 'พิมพ์ภาษาไทย'}
             </div>
@@ -320,15 +330,15 @@ const GameScreen = ({ level, onShowScore, score, wordsData, onStop }) => {
               <button
                 onClick={checkAnswer}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-green-500 hover:bg-green-600 text-white border-2 border-green-300 rounded-lg font-bold transition-all hover:scale-105 transform w-full sm:w-auto text-base sm:text-lg"
-                style={{fontFamily: 'monospace, "Courier New", Courier'}}
+                style={{ fontFamily: 'monospace, "Courier New", Courier' }}
               >
                 ยืนยัน
               </button>
             )}
           </div>
-          <div 
+          <div
             className="mt-2 sm:mt-4 text-gray-400 text-xs sm:text-sm lg:text-base text-center"
-            style={{fontFamily: 'monospace, "Courier New", Courier'}}
+            style={{ fontFamily: 'monospace, "Courier New", Courier' }}
           >
             {isMobile ? 'กดปุ่มยืนยัน หรือ Enter เพื่อส่งคำตอบ' : 'กด Enter เพื่อส่งคำตอบ'}
           </div>
@@ -441,9 +451,9 @@ const App = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center text-white">
-        <div 
+        <div
           className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-400"
-          style={{fontFamily: 'monospace, "Courier New", Courier'}}
+          style={{ fontFamily: 'monospace, "Courier New", Courier' }}
         >
           กำลังโหลด...
         </div>
